@@ -1,0 +1,24 @@
+services:
+  app:
+    container_name: containerize_app_1
+    # your code goes here ...
+    build: ./app
+    ports:
+      - '8000:8080'
+    environment:
+      - CHOKIDAR_USERPOLLING=true
+  nginx:
+    container_name: containerize_nginx_1
+    # your code goes here ...
+    build: ./nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/files:/etc/nginx/files
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - CHOKIDAR_USERPOLLING=true
+      - NGINX_PORT=80
+      - NGINX_HOST=localhost                                                                                                                                                                                                        
+                                                                                                                                                                                                              
