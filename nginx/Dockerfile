@@ -1,12 +1,5 @@
 # your code goes here ...
-FROM nginx
-
-RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-# COPY files/localhost.crt /etc/nginx/files/localhost.crt
-# COPY files/localhost.key /etc/nginx/files/localhost.key
+FROM nginx:stable-alpine3.17-slim
 
 RUN groupadd -r nginx -g 433 && \
     useradd -u 431 -r -g nginx -s /sbin/nologin -c "Docker image user" nginx
